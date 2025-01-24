@@ -4,16 +4,71 @@ https://bennettfeely.com/clippy/
 */
 
 body {
+    font-family: "Comic Sans MS", "Comic Sans";
     display: grid;
     grid-template-rows: 1fr auto 10vh;
     background-color: black;
     align-items: center;
     margin: 0;
     height: 100vh;
+
+    /* \/ sky is inserted here \/ */
+    background: linear-gradient(to bottom, #1100ff,#0b00a1 15%, #020025);
+}
+
+
+/* those are windows that we can add on screen like settings div */
+.pane { 
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 20%;
+    min-width: 50px;
+    max-width: 600px;
+    background: #d4d4d4;
+    border-radius: 15px;
+    box-shadow: 0px 0px 8px 5px #fff;
+    z-index: 100;
+}
+
+::selection{
+    color: #fff;
+    background: #6F36FF;
+}
+
+.pane header{
+    font-size: 23px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 15px 15px 1px 1px;
+    border-left: 15px;
+    border-bottom: solid #ccc;
+    background: #e4e4e4;
+}
+
+.pane header.active{
+    background: #e4e4e4;
+    user-select: none;
+}
+
+.pane .content{
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    overflow: auto;
+}
+
+.content p{
+    font-size: 16px;
+    text-align: center;
 }
 
 #sky {
-    background: linear-gradient(to bottom, #1900fd, #0a009ca8);
+    /* here we set background to invisible so sky is visible.
+    Yeah this div is named sky but its place for stars - not background */
+    background-color: transparent;
     width: 100%;
     height: 100%;
 }
@@ -48,7 +103,7 @@ body {
     filter: blur(10px);
 }
 
-.gwiazda_top{
+.star_holder{
     clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 0% 80%, 0% 20%);
     height: 16px;
     width: 10px;
@@ -86,10 +141,9 @@ body {
 #stars_container div:nth-child(3) {    top: 2%; left: 67%; height: 7px; width: 10px; --time:0.4s;}
 
 
-
 #tree {
-    background: linear-gradient(to bottom, #0a009ca8, #020025a8);
-    width: 100%;
+    /* here we set background to invisible so sky is visible */
+    background-color: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,7 +170,7 @@ body {
 #layer2{ --n: 3; --t:4; --z:4;}
 #layer1{ --n: 4; --t:0; --z:3;}
 
-.bombka {
+.bauble {
     position:relative;
     clip-path: circle(50);
     width: 50px;
@@ -134,23 +188,23 @@ body {
     justify-content: center;
 }
 
-#bombka1{left: 16%;background: radial-gradient(at top left,#ffe5ff, #ff70ff);}
-#bombka12{left: 70%; top: 76%;background: radial-gradient(at top left, #d3ffc8, #4aff24);}
-#bombka2{left: 45%;background: radial-gradient(at top left, #fff2b8, #ffc107);}
-#bombka3{left: 60%;background: radial-gradient(at top left, #d6d6ff, #7364ff);}
-#bombka4{left: 30%; top: 50%;background: radial-gradient(at top left, #c8ffe9, #24ffc9);}
-#bombka5{left: 41%; top: 40%;background: radial-gradient(at top left, #ffe5e5, #ff6363);}
+#bauble1{left: 16%;background: radial-gradient(at top left,#ffe5ff, #ff70ff);}
+#bauble12{left: 70%; top: 76%;background: radial-gradient(at top left, #d3ffc8, #4aff24);}
+#bauble2{left: 45%;background: radial-gradient(at top left, #fff2b8, #ffc107);}
+#bauble3{left: 60%;background: radial-gradient(at top left, #d6d6ff, #7364ff);}
+#bauble4{left: 30%; top: 50%;background: radial-gradient(at top left, #c8ffe9, #24ffc9);}
+#bauble5{left: 41%; top: 40%;background: radial-gradient(at top left, #ffe5e5, #ff6363);}
 
-#bombka1:hover, #bombka12:hover, #bombka2:hover, #bombka3:hover,
-#bombka4:hover, #bombka5:hover{
+#bauble1:hover, #bauble12:hover, #bauble2:hover, #bauble3:hover,
+#bauble4:hover, #bauble:hover{
     background: radial-gradient(at top left, #ffffff, #b1b1b1);
 }
 
-.bombka:hover {
+.bauble:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.bombka_top{
+.bauble_top{
     clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 0% 80%, 0% 20%);
     height: 10px;
     width: 10px;

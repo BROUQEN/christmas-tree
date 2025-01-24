@@ -26,39 +26,98 @@
 
         </div>
 
+        <div id="options" class="pane">
+            <header>Options (drag here owo)</header>
+
+            <div class="content">
+                <p>This is a draggable options window. Will add more content here in the future. note: this window is buggy af ;c</p>
+                
+            </div>
+            
+        </div>
+
+        <script>
+            const pane = document.querySelector(".pane");
+            const header = pane.querySelector("header");
+
+            let isDragging = false;
+            let startX, startY, startLeft, startTop;
+
+            function onDrag(event) {
+                if (!isDragging) return;
+
+                const movementX = event.clientX - startX;
+                const movementY = event.clientY - startY;
+
+                const newLeft = startLeft + movementX;
+                const newTop = startTop + movementY;
+
+                const maxLeft = window.innerWidth - pane.offsetWidth;
+                const maxTop = window.innerHeight - pane.offsetHeight;
+
+                const clampedLeft = Math.max(0, Math.min(newLeft, maxLeft));
+                const clampedTop = Math.max(0, Math.min(newTop, maxTop));
+
+                pane.style.left = `${clampedLeft}px`;
+                pane.style.top = `${clampedTop}px`;
+            }
+
+            function onMouseDown(event) {
+                isDragging = true;
+                startLeft = parseInt(window.getComputedStyle(pane).left, 10);
+                startTop = parseInt(window.getComputedStyle(pane).top, 10);
+                startX = event.clientX;
+                startY = event.clientY;
+
+                document.addEventListener("mousemove", onDrag);
+                document.addEventListener("mouseup", onMouseUp);
+            }
+
+            function onMouseUp() {
+                isDragging = false;
+                document.removeEventListener("mousemove", onDrag);
+                document.removeEventListener("mouseup", onMouseUp);
+            }
+
+            header.addEventListener("mousedown", onMouseDown);
+
+        </script>
+          
+          
+          
 
         <div id="tree">
             <!--MAIN_STAR-->
 
             <div id="main_star"></div>
-            <div class="gwiazda_top"></div>
+            <div class="star_holder"></div>
             
             <div id="layers_container">
                 <!--LVL5-->
                 <div id="layer5" class="layers">
-                    <div class="bombka" id="bombka5">
-                        <div class="bombka_top"></div>
+                    <div class="bauble" id="bauble5">
+                        <div class="bauble_top"></div>
                     </div>
                 </div>
                 <!--LVL4-->
                 <div id="layer4" class="layers">
-                    <div class="bombka" id="bombka4">
-                        <div class="bombka_top"></div>
+                    <div class="bauble" id="bauble4">
+                        <div class="bauble_top"></div>
                     </div>
                 </div>
                 <!--LVL3-->
                 <div id="layer3" class="layers">
-                    <div class="bombka" id="bombka3">
-                        <div class="bombka_top"></div>
+                    <div class="bauble" id="bauble3">
+                        <div class="bauble_top"></div>
                     </div>
                     <div class="trapezoid">
-                        <div class="bombka_top"></div>
+                        <div class="bauble_top"></div>
                     </div>
                 </div>
                 <!--LVL2-->
                 <div id="layer2" class="layers">
-                    <div class="bombka" id="bombka2">
-                        <div class="bombka_top"></div>
+                    <div class="bauble" id="bauble2">
+                        <div class="bauble_top"></div>
                     </div>
                     <div class="trapezoid" id="trapezoid2">
                         <div class="trapezoid_top"></div>
@@ -66,11 +125,11 @@
                 </div>
                 <!--LVL1-->
                 <div id="layer1" class="layers">
-                    <div class="bombka" id="bombka12">
-                        <div class="bombka_top"></div>
+                    <div class="bauble" id="bauble12">
+                        <div class="bauble_top"></div>
                     </div>
-                    <div class="bombka" id="bombka1">
-                        <div class="bombka_top"></div>
+                    <div class="bauble" id="bauble1">
+                        <div class="bauble_top"></div>
                     </div>
                 </div>
 
