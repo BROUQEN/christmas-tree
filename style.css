@@ -11,11 +11,9 @@ body {
     align-items: center;
     margin: 0;
     height: 100vh;
-
     /* \/ sky is inserted here \/ */
     background: linear-gradient(to bottom, #1100ff,#0b00a1 15%, #020025);
 }
-
 
 /* those are windows that we can add on screen like settings div */
 .pane { 
@@ -29,11 +27,6 @@ body {
     border-radius: 15px;
     box-shadow: 0px 0px 8px 5px #fff;
     z-index: 100;
-}
-
-::selection{
-    color: #fff;
-    background: #6F36FF;
 }
 
 .pane header{
@@ -124,7 +117,6 @@ body {
     
 }
 
-
 @keyframes flick {
     0% {
         opacity: 0.5;
@@ -135,11 +127,8 @@ body {
 }
 
 #stars_container div:nth-child(1) {    top: 8px; left: 12%; height: 20px; width: 20px; --time:0.2s;}
-
 #stars_container div:nth-child(2) {    top: 4%; left: 15%; height: 15px; width: 15px; --time:0.3s;}
-
 #stars_container div:nth-child(3) {    top: 2%; left: 67%; height: 7px; width: 10px; --time:0.4s;}
-
 
 #tree {
     /* here we set background to invisible so sky is visible */
@@ -151,7 +140,6 @@ body {
 
 .layers{
     background: radial-gradient(#00c91b, #06a07f);
-
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     width: calc(200px + 100px * var(--n));
     height: calc(100px + 50px * var(--n));
@@ -195,8 +183,7 @@ body {
 #bauble4{left: 30%; top: 50%;background: radial-gradient(at top left, #c8ffe9, #24ffc9);}
 #bauble5{left: 41%; top: 40%;background: radial-gradient(at top left, #ffe5e5, #ff6363);}
 
-#bauble1:hover, #bauble12:hover, #bauble2:hover, #bauble3:hover,
-#bauble4:hover, #bauble:hover{
+#bauble1:hover, #bauble12:hover, #bauble2:hover, #bauble3:hover, #bauble4:hover, #bauble5:hover{
     background: radial-gradient(at top left, #ffffff, #b1b1b1);
 }
 
