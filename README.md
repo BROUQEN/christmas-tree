@@ -2,9 +2,16 @@
 
 ## I made this project to learn html (and get better grade at uni first semester)
 
-This project will be used to improve my html and css. In the future I am planning to:
+### What I have done:
+* ~~Add floating options window~~
+* ~~Add better visuals. For example current snow rework~~
+
+### To do:
 * Simplify page as much as it's possible
-* Add options bar on the side so you can modify tree height etc
-* Add some funny stuff you can do with tree ;3 (click actions etc)
+* Add fullscreen mode
+* Add tree generating system based on settings
+* Custom ur own tree (also with images ;3)
+* Add armagedon mode so u can destroy the tree ;c (please don't do it)
 * Add day/night cycle
-* Add better visuals. For example current snow.
+
+fun fact: I used it as my christmas tree displaying it ass wallpaper ;c
