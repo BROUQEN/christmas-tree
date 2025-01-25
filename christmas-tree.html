@@ -19,30 +19,46 @@
                 <script>
 
                     function createSnowflake() {
-                      const snowflake = document.createElement("div");
-                      snowflake.className = "snowflake";
-                      snowflake.style.left = Math.random() * 100 + "vw"; // random pos
-                      snowflake.style.width = snowflake.style.height = Math.random() * 5 + 5 + "px"; // random size
+                        const snowflake = document.createElement("div");
+                        snowflake.className = "snowflake";
 
-                      let fallTime = Math.random() * 5 + 5;
-                      snowflake.style.animation = `fall ${fallTime}s linear infinite`; // random time
+                        let fallTime = Math.random() * 5 + 5;
+                        snowflake.style.animation = `fall ${fallTime}s linear infinite`; // random time
+                        
+                        let windPower = parseFloat(document.getElementById("windPower").value); // Check value for wind from settings
+                        snowflake.style.setProperty("--windPower", windPower + "vw"); // add wind to animation
+                        
+                        snowflake.style.width = snowflake.style.height = Math.random() * 5 + 5 + "px"; // random size
 
 
-                      snowflake.style.opacity = Math.random() * 0.7 + 0.3; // random opacity
-                      snowflake.style.zIndex = Math.random() < 0.5 ? 1 : 10; // random z 1 or 10 back of front of the tree
-                      document.body.appendChild(snowflake);
+                        //idk what really happens in math.random. I don't know why this piece of nightmare down below even works? but it works.. yuppi? ;-;
 
-                      // Deleting snowflakes
-                      setTimeout(() => {
+                        //check for wind, if yes we change position of spawning snowflakes. If we dont do that then theres no snowflakes in botoom corners 
+
+                        if(windPower == 0){
+                            snowflake.style.left = Math.random() * 100 + "vw"; // random pos
+                        }else if(windPower > 0){
+                            snowflake.style.left = (Math.random() * (100 + windPower) - windPower) + "vw"; // random pos based on wind
+                        
+                        }else{
+                            snowflake.style.left = Math.random() * (100 - windPower) + "vw";  //random pos based on wind
+                        
+                        }
+                        snowflake.style.opacity = Math.random() * 0.7 + 0.3; // random opacity
+                        snowflake.style.zIndex = Math.random() < 0.5 ? 1 : 10; // random z 1 or 10 back of front of the tree
+                        document.body.appendChild(snowflake);
+
+                        // Deleting snowflakes
+                        setTimeout(() => {
                         snowflake.remove();
-                      }, fallTime * 1000); //fixed falling time so when animation end they die ;c
+                        }, fallTime * 1000); //fixed falling time so when animation end they die ;c
                     }
 
                     // Initial settings
-                    let snowAmount = 15;
-                    let snowSpawnDelay = 1000 / snowAmount;
+                    var snowAmount = 15;
+                    var snowSpawnDelay = 1000 / snowAmount;
 
-                    let snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
+                    var snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
                     console.log(snowSpawnDelay);
 
                 </script>
@@ -58,45 +74,81 @@
 
 
                 <div class="slider_settings">
-                    <p>Snow Amount</p>
+                    <div class="slider">
+                        <p>Snow Amount</p>
             
-                    <input type="range" min="0" max="70" value="15" class="slider" id="snowAmount">
+                        <input type="range" min="0" max="70" value="15" class="slider" id="snowAmount">
 
-                    <div class="value-container">
-                        <span id="snowAmountInput">15/s</span>
+                        <div class="value-container">
+                            <span id="snowAmountInput">15/s</span>
+                        </div>
                     </div>
+                    
+                    
+                    <script>
+                        let outputSnowAmount = document.getElementById("snowAmountInput");
+                        let sliderSnowAmount = document.getElementById("snowAmount");
+                
+                        // When slider has input
+                        sliderSnowAmount.oninput = function () {
+                            // Update value
+                            outputSnowAmount.innerHTML = this.value + "/s";
+                            if(this.value == 0){
+                                console.log("Snow Turned OFF");
+                                clearInterval(snowSpawnInt);
+                            }else{
+                                snowAmount = this.value;
+                                snowSpawnDelay = 1000 / snowAmount;
 
+                                // Stop previous interval if it exists
+                                clearInterval(snowSpawnInt);
+
+                                // Start new interval with updated delay
+                                snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
+
+                                console.log("Snoflake spawning every " + snowSpawnDelay + "ms");
+                            }       
+                        };
+
+                    </script>
+
+                </div>
+
+                <div class="slider_settings">
+                    <div class="slider">
+                        <p>Wind Power</p>
+            
+                        <input type="range" min="-100" max="100" value="20" class="slider" id="windPower">
+
+                        <div class="value-container">
+                        <span id="windPowerInput">2vw/s</span>
+                        </div>
+                    </div>
+                    
+                    <p class="slider_description">(1vw is 1% of the viewport ;3)</p>
+
+                    <script>
+                        let outputWindAmount = document.getElementById("windPowerInput");
+                        let sliderWindAmount = document.getElementById("windPower");
+                
+                        // When slider has input
+                        sliderWindAmount.oninput = function () {
+                            // Update value
+                            outputWindAmount.innerHTML = this.value / 10 + "vw/s";
+                            if(this.value == 0){
+                                console.log("Wind Turned OFF");
+                                
+                            }else{
+                                console.log("Wind Power set to "+this.value);
+                            }       
+                        };
+
+                    </script>
                 </div>
                     
             </div>
         
-            <script>
-                const output = document.getElementById("snowAmountInput");
-                const slider = document.getElementById("snowAmount");
-        
-                // When slider has input
-                slider.oninput = function () {
-                    // Update value
-                    output.innerHTML = this.value + "/s";
-                    if(this.value == 0){
-                        console.log("Snow Turned OFF");
-                        clearInterval(snowSpawnInt);
-                    }else{
-                        snowAmount = this.value;
-                        snowSpawnDelay = 1000 / snowAmount;
-
-                        // Stop previous interval if it exists
-                        clearInterval(snowSpawnInt);
-
-                        // Start new interval with updated delay
-                        snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
-
-                        console.log(snowSpawnDelay);
-                    }
-                    
-                };
-
-            </script>
+            
         </div>
 
         <script>
