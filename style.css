@@ -13,6 +13,8 @@ body {
     height: 100vh;
     /* \/ sky is inserted here \/ */
     background: linear-gradient(to bottom, #1100ff,#0b00a1 15%, #020025);
+    /* block user from moving site and fix glitches when snowflakes are generated */
+    overflow: hidden;
 }
 
 /* those are windows that we can add on screen like settings div */
@@ -27,6 +29,8 @@ body {
     border-radius: 15px;
     box-shadow: 0px 0px 8px 5px #fff;
     z-index: 100;
+    display: flex;
+    flex-direction: column;
 }
 
 .pane header{
@@ -47,16 +51,24 @@ body {
 .pane .content{
     display: flex;
     padding: 10px;
-    align-items: center;
+
     flex-direction: column;
-    justify-content: center;
     overflow: auto;
 }
 
 .content p{
     font-size: 16px;
-    text-align: center;
 }
+
+.slider_settings{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+
 
 #sky {
     /* here we set background to invisible so sky is visible.
@@ -71,20 +83,35 @@ body {
     top: -10px;
     background-color: white;
     border-radius: 50%;
-    opacity: 0.7;
-    animation: fall 10s linear infinite;
     z-index: 19;
     filter:blur(2px);
+    pointer-events: none;
+    overflow: hidden;
 }
 
 @keyframes fall {
     0% {
-        transform: translateY(-10px);
+      transform: translateY(-10px);
     }
     100% {
-        transform: translateY(100vh);
+      transform: translateY(100vh);
     }
 }
+
+#options .content {
+    padding: 10px;
+}
+
+#snowflakeCount {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#snowflakeCountValue {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
 
 #main_star{
     background: radial-gradient(at top left,#e2de00, #fffb00);

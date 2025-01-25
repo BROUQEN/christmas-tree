@@ -16,25 +16,87 @@
             </div>
 
             <div id="snowflakes_container">
-                <!-- I will add snowflakes generation in the future insted of mannualy adding them -->
-                <div class="snowflake" style="width: 5px; height: 5px; left: 10%; animation-duration: 5s;"></div>
-                <div class="snowflake" style="width: 8px; height: 8px; left: 30%; animation-duration: 6s;"></div>
-                <div class="snowflake" style="width: 6px; height: 6px; left: 50%; animation-duration: 7s;"></div>
-                <div class="snowflake" style="width: 4px; height: 4px; left: 70%; animation-duration: 4s;"></div>
-                <div class="snowflake" style="width: 7px; height: 7px; left: 90%; animation-duration: 8s;"></div>
+                <script>
+
+                    function createSnowflake() {
+                      const snowflake = document.createElement("div");
+                      snowflake.className = "snowflake";
+                      snowflake.style.left = Math.random() * 100 + "vw"; // random pos
+                      snowflake.style.width = snowflake.style.height = Math.random() * 5 + 5 + "px"; // random size
+
+                      let fallTime = Math.random() * 5 + 5;
+                      snowflake.style.animation = `fall ${fallTime}s linear infinite`; // random time
+
+
+                      snowflake.style.opacity = Math.random() * 0.7 + 0.3; // random opacity
+                      snowflake.style.zIndex = Math.random() < 0.5 ? 1 : 10; // random z 1 or 10 back of front of the tree
+                      document.body.appendChild(snowflake);
+
+                      // Deleting snowflakes
+                      setTimeout(() => {
+                        snowflake.remove();
+                      }, fallTime * 1000); //fixed falling time so when animation end they die ;c
+                    }
+
+                    // Initial settings
+                    let snowAmount = 15;
+                    let snowSpawnDelay = 1000 / snowAmount;
+
+                    let snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
+                    console.log(snowSpawnDelay);
+
+                </script>
             </div>
-            
 
         </div>
 
         <div id="options" class="pane">
             <header>Options (drag here owo)</header>
-
+        
             <div class="content">
                 <p>This is a draggable options window. Will add more content here in the future. note: this window is buggy af ;c</p>
-                
-            </div>
+
+
+                <div class="slider_settings">
+                    <p>Snow Amount</p>
             
+                    <input type="range" min="0" max="70" value="15" class="slider" id="snowAmount">
+
+                    <div class="value-container">
+                        <span id="snowAmountInput">15/s</span>
+                    </div>
+
+                </div>
+                    
+            </div>
+        
+            <script>
+                const output = document.getElementById("snowAmountInput");
+                const slider = document.getElementById("snowAmount");
+        
+                // When slider has input
+                slider.oninput = function () {
+                    // Update value
+                    output.innerHTML = this.value + "/s";
+                    if(this.value == 0){
+                        console.log("Snow Turned OFF");
+                        clearInterval(snowSpawnInt);
+                    }else{
+                        snowAmount = this.value;
+                        snowSpawnDelay = 1000 / snowAmount;
+
+                        // Stop previous interval if it exists
+                        clearInterval(snowSpawnInt);
+
+                        // Start new interval with updated delay
+                        snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
+
+                        console.log(snowSpawnDelay);
+                    }
+                    
+                };
+
+            </script>
         </div>
 
         <script>
@@ -84,12 +146,8 @@
 
         </script>
           
-          
-          
-
         <div id="tree">
             <!--MAIN_STAR-->
-
             <div id="main_star"></div>
             <div class="star_holder"></div>
             
@@ -133,26 +191,17 @@
                         <div class="bauble_top"></div>
                     </div>
                 </div>
-
             </div>
 
             <!--LOG-->
-
             <div id="log">
-                
             </div>
         </div>
 
-        <div id="ground">
-
-        </div>
-        
-
+        <div id="ground"></div>
     
 </body>
 
-<footer>
-
-</footer>
+<footer></footer>
 
 </html>
