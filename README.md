@@ -11,7 +11,7 @@
 * Add fullscreen mode
 * Add tree generating system based on settings
 * Custom ur own tree (also with images ;3)
-* Add armagedon mode so u can destroy the tree ;c (please don't do it)
+* Add armageddon mode so u can destroy the tree ;c (please don't do it)
 * Add day/night cycle
 
 fun fact: I used it as my christmas tree displaying it ass wallpaper ;c
