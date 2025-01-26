@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8">
-  <title>Christmas tree ;3</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Christmas tree ;3</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script defer src="./scripts/snowGeneration.js"></script>
+    <script defer src="./scripts/panes.js"></script>
+
 </head>
 
 <body>
@@ -13,55 +17,6 @@
                 <div class="star"></div>
                 <div class="star"></div>
                 <div class="star"></div>
-            </div>
-
-            <div id="snowflakes_container">
-                <script>
-
-                    function createSnowflake() {
-                        const snowflake = document.createElement("div");
-                        snowflake.className = "snowflake";
-
-                        let fallTime = Math.random() * 5 + 5;
-                        snowflake.style.animation = `fall ${fallTime}s linear infinite`; // random time
-                        
-                        let windPower = parseFloat(document.getElementById("windPower").value); // Check value for wind from settings
-                        snowflake.style.setProperty("--windPower", windPower + "vw"); // add wind to animation
-                        
-                        snowflake.style.width = snowflake.style.height = Math.random() * 5 + 5 + "px"; // random size
-
-
-                        //idk what really happens in math.random. I don't know why this piece of nightmare down below even works? but it works.. yuppi? ;-;
-
-                        //check for wind, if yes we change position of spawning snowflakes. If we dont do that then theres no snowflakes in botoom corners 
-
-                        if(windPower == 0){
-                            snowflake.style.left = Math.random() * 100 + "vw"; // random pos
-                        }else if(windPower > 0){
-                            snowflake.style.left = (Math.random() * (100 + windPower) - windPower) + "vw"; // random pos based on wind
-                        
-                        }else{
-                            snowflake.style.left = Math.random() * (100 - windPower) + "vw";  //random pos based on wind
-                        
-                        }
-                        snowflake.style.opacity = Math.random() * 0.7 + 0.3; // random opacity
-                        snowflake.style.zIndex = Math.random() < 0.5 ? 1 : 10; // random z 1 or 10 back of front of the tree
-                        document.body.appendChild(snowflake);
-
-                        // Deleting snowflakes
-                        setTimeout(() => {
-                        snowflake.remove();
-                        }, fallTime * 1000); //fixed falling time so when animation end they die ;c
-                    }
-
-                    // Initial settings
-                    var snowAmount = 15;
-                    var snowSpawnDelay = 1000 / snowAmount;
-
-                    var snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
-                    console.log(snowSpawnDelay);
-
-                </script>
             </div>
 
         </div>
@@ -220,53 +175,6 @@
         
             
         </div>
-
-        <script>
-            const pane = document.querySelector(".pane");
-            const header = pane.querySelector("header");
-
-            let isDragging = false;
-            let startX, startY, startLeft, startTop;
-
-            function onDrag(event) {
-                if (!isDragging) return;
-
-                const movementX = event.clientX - startX;
-                const movementY = event.clientY - startY;
-
-                const newLeft = startLeft + movementX;
-                const newTop = startTop + movementY;
-
-                const maxLeft = window.innerWidth - pane.offsetWidth;
-                const maxTop = window.innerHeight - pane.offsetHeight;
-
-                const clampedLeft = Math.max(0, Math.min(newLeft, maxLeft));
-                const clampedTop = Math.max(0, Math.min(newTop, maxTop));
-
-                pane.style.left = `${clampedLeft}px`;
-                pane.style.top = `${clampedTop}px`;
-            }
-
-            function onMouseDown(event) {
-                isDragging = true;
-                startLeft = parseInt(window.getComputedStyle(pane).left, 10);
-                startTop = parseInt(window.getComputedStyle(pane).top, 10);
-                startX = event.clientX;
-                startY = event.clientY;
-
-                document.addEventListener("mousemove", onDrag);
-                document.addEventListener("mouseup", onMouseUp);
-            }
-
-            function onMouseUp() {
-                isDragging = false;
-                document.removeEventListener("mousemove", onDrag);
-                document.removeEventListener("mouseup", onMouseUp);
-            }
-
-            header.addEventListener("mousedown", onMouseDown);
-
-        </script>
           
         <div id="tree">
             <!--MAIN_STAR-->
