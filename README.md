@@ -14,4 +14,4 @@
 * Add armageddon mode so u can destroy the tree ;c (please don't do it)
 * Add day/night cycle
 
-fun fact: I used it as my christmas tree displaying it ass wallpaper ;c
+fun fact: I used it as my christmas tree displaying it as wallpaper ;c
