@@ -3,8 +3,6 @@ var snowAmount = 15;
 var snowSpawnDelay = 1000 / snowAmount;
 
 var snowSpawnInt = setInterval(createSnowflake, snowSpawnDelay);
-console.log(snowSpawnDelay);
-
 
 function createSnowflake() {
     const snowflake = document.createElement("div");

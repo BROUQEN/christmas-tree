@@ -1,0 +1,109 @@
+/*
+I used this site to generate shapes:
+https://bennettfeely.com/clippy/
+*/
+
+body {
+    font-family: "Comic Sans MS", "Comic Sans";
+    display: grid;
+    grid-template-rows: 1fr auto 10vh;
+    background-color: black;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    /* \/ sky is inserted here \/ */
+    background: linear-gradient(to bottom, #1100ff,#0b00a1 15%, #020025);
+    /* block user from moving site and fix glitches when snowflakes are generated */
+    overflow: hidden;
+}
+
+/* those are windows that we can add on screen like settings div */
+.pane { 
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 20%;
+    min-width: 300px;
+    max-width: 600px;
+
+    max-height: 400px;
+
+    background: #d4d4d4;
+    border-radius: 15px;
+    box-shadow: 0px 0px 8px 5px #fff;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.pane header{
+    font-size: 23px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 15px 15px 1px 1px;
+    border-left: 15px;
+    border-bottom: solid #ccc;
+    background: #e4e4e4;
+    user-select: none;
+}
+
+.pane .content{
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.pane .content > div{
+    border-top: solid #020025 1px;
+}
+
+.content p{
+    font-size: 16px;
+}
+
+.content > p{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.slider_settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.slider_description{
+    margin-top: 0 ;
+    padding: 0;
+}
+
+.slider_containter{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.slider_containter p{
+    width: 25%;
+}
+
+.slider{
+    width: 50%;
+}
+
+.value-container{
+    width: 25%;
+}
+
+#ground {
+    background: linear-gradient(to bottom, #ffffff, #6e6e6e);
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    filter: blur(1px);
+}

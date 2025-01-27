@@ -1,0 +1,65 @@
+#sky {
+    /* here we set background to invisible so sky is visible.
+    Yeah this div is named sky but its place for stars - not background */
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    border-radius: 50%;
+    z-index: 19;
+    filter:blur(2px);
+    pointer-events: none;
+    overflow: hidden;
+}
+
+@keyframes fall {
+    0% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateX(var(--windPower)) translateY(100vh);
+    }
+}
+
+#options .content {
+    padding: 10px;
+}
+
+#snowflakeCount {
+    width: 100%;
+    margin: 10px 0;
+}
+
+#snowflakeCountValue {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.star{
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    width: 20px;
+    height: 20px;
+    color: white;
+    background:white;
+    position: relative;
+    animation: flick var(--time) linear infinite;
+    
+}
+
+@keyframes flick {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+#stars_container div:nth-child(1) {    top: 8px; left: 12%; height: 20px; width: 20px; --time:0.2s;}
+#stars_container div:nth-child(2) {    top: 4%; left: 15%; height: 15px; width: 15px; --time:0.3s;}
+#stars_container div:nth-child(3) {    top: 2%; left: 67%; height: 7px; width: 10px; --time:0.4s;}
