@@ -10,6 +10,8 @@
 
     <script defer src="./scripts/snowGeneration.js"></script>
     <script defer src="./scripts/panes.js"></script>
+    <script defer src="./scripts/treeGeneration.js"></script>
+    <script defer src="./scripts/setWindPower.js"></script>
 
 </head>
 
@@ -75,32 +77,29 @@
                     <div class="slider_containter">
                         <p>Wind Power</p>
             
-                        <input type="range" min="-100" max="100" value="20" class="slider" id="windPower">
+                        <input type="range" min="-100" max="100" value="windPower" class="slider" id="windPower">
 
                         <div class="value-container">
-                        <span id="windPowerInput">2vw/s</span>
+                        <span id="windPowerInput"></span>
+                        </div>
+                    </div>
+                    <p class="slider_description">(1vw is 1% of the viewport ;3)</p>
+
+                </div>
+
+                <div class="slider_settings">
+                    <div class="slider_containter">
+                        <p>Tree height</p>
+            
+                        <input type="range" min="3" max="8" value="5" class="slider" id="treeHeight">
+
+                        <div class="value-container">
+                        <span id="treeHeightInput">5 levels</span>
                         </div>
                     </div>
                     
-                    <p class="slider_description">(1vw is 1% of the viewport ;3)</p>
+                    <p class="slider_description">not working 4 now</p>
 
-                    <script>
-                        let outputWindAmount = document.getElementById("windPowerInput");
-                        let sliderWindAmount = document.getElementById("windPower");
-                
-                        // When slider has input
-                        sliderWindAmount.oninput = function () {
-                            // Update value
-                            outputWindAmount.innerHTML = this.value / 10 + "vw/s";
-                            if(this.value == 0){
-                                console.log("Wind Turned OFF");
-                                
-                            }else{
-                                console.log("Wind Power set to "+this.value);
-                            }       
-                        };
-
-                    </script>
                 </div>
 
                 <div>

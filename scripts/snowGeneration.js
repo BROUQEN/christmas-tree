@@ -11,7 +11,7 @@ function createSnowflake() {
     let fallTime = Math.random() * 5 + 5;
     snowflake.style.animation = `fall ${fallTime}s linear infinite`; // random time
     
-    let windPower = parseFloat(document.getElementById("windPower").value); // Check value for wind from settings
+   // let windPower = parseFloat(document.getElementById("windPower").value); // Check value for wind from settings
     snowflake.style.setProperty("--windPower", windPower + "vw"); // add wind to animation
     
     snowflake.style.width = snowflake.style.height = Math.random() * 5 + 5 + "px"; // random size
@@ -24,11 +24,10 @@ function createSnowflake() {
     if(windPower == 0){
         snowflake.style.left = Math.random() * 100 + "vw"; // random pos
     }else if(windPower > 0){
-        snowflake.style.left = (Math.random() * (100 + windPower) - windPower) + "vw"; // random pos based on wind
+        snowflake.style.left = Math.random() * (100 - (0 - windPower)) + (0 - windPower) + "vw"; // random pos based on wind
     
     }else{
         snowflake.style.left = Math.random() * (100 - windPower) + "vw";  //random pos based on wind
-    
     }
     snowflake.style.opacity = Math.random() * 0.7 + 0.3; // random opacity
     snowflake.style.zIndex = Math.random() < 0.5 ? 1 : 10; // random z 1 or 10 back of front of the tree
