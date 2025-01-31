@@ -29,9 +29,9 @@
 .layers{
     background: radial-gradient(#00c91b, #06a07f);
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    width: calc(200px + 100px * var(--n));
-    height: calc(100px + 50px * var(--n));
-    margin-bottom: calc(-50px * var(--t));
+    width: calc(144px + 72px * var(--n));
+    height: calc(72px + 36px * var(--n));
+    margin-top: calc(-36px * var(--t));
     margin-left: auto;
     margin-right: auto;
     z-index: var(--z);
@@ -40,21 +40,24 @@
     flex-direction: row;
 }
 
-#layer5{ --n: 0; --t:1; --z:7;}
-#layer4{ --n: 1; --t:2; --z:6;}
-#layer3{ --n: 2; --t:3; --z:5;}
-#layer2{ --n: 3; --t:4; --z:4;}
-#layer1{ --n: 4; --t:0; --z:3;}
+#layer1{ --n: 0; --t:0; --z:8;}
+#layer2{ --n: 1; --t:1; --z:7;}
+#layer3{ --n: 2; --t:2; --z:6;}
+#layer4{ --n: 3; --t:3; --z:5;}
+#layer5{ --n: 4; --t:4; --z:4;}
+#layer6{ --n: 5; --t:5; --z:3;}
+#layer7{ --n: 6; --t:6; --z:2;}
+#layer8{ --n: 7; --t:7; --z:1;}
 
 .bauble {
     position:relative;
     clip-path: circle(50);
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: radial-gradient(#bfedff, #24c1ff);
-    box-shadow: 5px 5px 10px #414141;
-    z-index: 90;
+    box-shadow: 3px 3px 6px #414141;
+    z-index: 9;
     opacity: 1;
     top: 70%;
     left: 50%;
@@ -64,12 +67,18 @@
     justify-content: center;
 }
 
-#bauble1{left: 16%;background: radial-gradient(at top left,#ffe5ff, #ff70ff);}
-#bauble12{left: 70%; top: 76%;background: radial-gradient(at top left, #d3ffc8, #4aff24);}
-#bauble2{left: 45%;background: radial-gradient(at top left, #fff2b8, #ffc107);}
+#bauble83{left: 75%; top: 85%; background: radial-gradient(at top left, #fff2b8, #ffc107);}
+#bauble82{left: 48%; top: 85%; background: radial-gradient(at top left, #c8ffe9, #24ffc9);}
+#bauble8{left: 6%; top: 85%; background: radial-gradient(at top left,#ffe5ff, #ff70ff);}
+#bauble72{left: 66%; top: 82%; background: radial-gradient(at top left,#ffe5ff, #ff70ff);}
+#bauble7{left: 26%; top: 82%; background: radial-gradient(at top left, #ffe5e5, #ff6363);}
+#bauble6{left: 48%; top: 80%; background: radial-gradient(at top left,#e5eeff, #7096ff);}
+#bauble52{left: 24%; top: 76%;background: radial-gradient(at top left,#ffe5ff, #ff70ff);}
+#bauble5{left: 70%; top: 76%;background: radial-gradient(at top left, #d3ffc8, #4aff24);}
+#bauble4{left: 45%;background: radial-gradient(at top left, #fff2b8, #ffc107);}
 #bauble3{left: 60%;background: radial-gradient(at top left, #d6d6ff, #7364ff);}
-#bauble4{left: 30%; top: 50%;background: radial-gradient(at top left, #c8ffe9, #24ffc9);}
-#bauble5{left: 41%; top: 40%;background: radial-gradient(at top left, #ffe5e5, #ff6363);}
+#bauble2{left: 30%; top: 50%;background: radial-gradient(at top left, #c8ffe9, #24ffc9);}
+#bauble1{left: 41%; top: 40%;background: radial-gradient(at top left, #ffe5e5, #ff6363);}
 
 #bauble1:hover, #bauble12:hover, #bauble2:hover, #bauble3:hover, #bauble4:hover, #bauble5:hover{
     background: radial-gradient(at top left, #ffffff, #b1b1b1);
@@ -81,11 +90,11 @@
 
 .bauble_top{
     clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 0% 80%, 0% 20%);
-    height: 10px;
-    width: 10px;
+    height: 6px;
+    width: 6px;
     position: relative;
     background: linear-gradient(to bottom, #0a009ca8, #020025a8);
-    top: -6px;
+    top: -4px;
 }
 
 .trapezoid{
@@ -126,6 +135,7 @@
 
 #log {
     background: radial-gradient(#704504, #462601);
-    height: 100px;
-    width: 100px;
+    height: calc(12.5px * var(--l));
+    width: calc(12.5px * var(--l));
+
 }
