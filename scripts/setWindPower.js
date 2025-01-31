@@ -1,3 +1,7 @@
+// IMPORTANT!
+// Snowflakes are affected by wind but its built into snowGeneration!
+// Tree is now affected too
+
 let outputWindAmount = document.getElementById("windPowerInput");
 let sliderWindAmount = document.getElementById("windPower");
 
@@ -17,3 +21,4 @@ sliderWindAmount.oninput = function () {
         console.log("Wind Power set to " + this.value);
     }     
 };
+
