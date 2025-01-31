@@ -6,27 +6,34 @@ let treeHeightInfo = document.getElementById("treeHeightInput");
 let treeHeight = sliderTreeHeight.value; // Declare treeHeight globally
 treeHeightInfo.innerHTML = treeHeight + " levels"; // Update the output text
 
-//initialize
-updateTreeHeight(); // Call the function to update the tree
+let lowestGeneratedLayer = 1; // First generated layer setup
+
+// Call the function when page is loaded
+updateTreeHeight();
 
 
 // When slider has input
 sliderTreeHeight.oninput = function () {
-    // Update value
+    // Update values
+    lowestGeneratedLayer = parseInt(treeHeight) + 1; // define first generated layer based on previous tree height
     treeHeight = this.value; // Store the value of the slider in treeHeight
     treeHeightInfo.innerHTML = this.value + " levels"; // Update the output text
+
     updateTreeHeight(); // Call the function to update the tree
 };
 
 function updateTreeHeight() {
     const layersContainer = document.getElementById("layers_container");
-    
+
     const previousLevels = layersContainer.querySelectorAll(".layers");
 
-    previousLevels.forEach(layer => layer.remove()); // Remove all previous layers
+    // Remove only the excess layers (those that are beyond the treeHeight)
+    for (let i = previousLevels.length; i > treeHeight; i--) {
+        previousLevels[i - 1].remove(); // Remove the layer starting from the last one
+    }
 
-    // Create tree layers
-    for (let i = 1; i <= treeHeight; i++) { // Loop through treeHeight layers
+    // Create tree layers but if we need
+    for (let i = lowestGeneratedLayer ; i <= treeHeight; i++) { // Loop through treeHeight layers
         const layerDiv = document.createElement('div');
         layerDiv.id = `layer${i}`;
         layerDiv.className = 'layers';
@@ -47,7 +54,7 @@ function updateTreeHeight() {
             const baubleTop4 = document.createElement('div');
             baubleTop4.className = 'bauble_top';
     
-            // Append baubleTop2 to baubleDiv2 and baubleDiv2 to layerDiv
+            // Append baubles to their respective layers
             baubleDiv4.appendChild(baubleTop4);
             layerDiv.appendChild(baubleDiv4);
         }
@@ -60,7 +67,7 @@ function updateTreeHeight() {
             const baubleTop2 = document.createElement('div');
             baubleTop2.className = 'bauble_top';
     
-            // Append baubleTop2 to baubleDiv2 and baubleDiv2 to layerDiv
+            // Append baubles to their respective layers
             baubleDiv2.appendChild(baubleTop2);
             layerDiv.appendChild(baubleDiv2);
         }
@@ -73,7 +80,7 @@ function updateTreeHeight() {
             const baubleTop3 = document.createElement('div');
             baubleTop3.className = 'bauble_top';
     
-            // Append baubleTop2 to baubleDiv2 and baubleDiv2 to layerDiv
+            // Append baubles to their respective layers
             baubleDiv3.appendChild(baubleTop3);
             layerDiv.appendChild(baubleDiv3);
         }
