@@ -5,6 +5,7 @@
 ### What I have done:
 * ~~Add floating options window~~
 * ~~Add better visuals. For example current snow rework~~
+* ~~Tree height based on input value~~
 
 ### To do:
 * Simplify page as much as it's possible
