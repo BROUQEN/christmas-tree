@@ -6,8 +6,10 @@
 * ~~Add floating options window~~
 * ~~Add better visuals. For example current snow rework~~
 * ~~Tree height based on input value~~
+* ~~Add wind and affect snowflakes~~
 
 ### To do:
+* Tree movement based on wind
 * Simplify page as much as it's possible
 * Add fullscreen mode
 * Add tree generating system based on settings
